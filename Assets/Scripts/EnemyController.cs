@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public int healthPoint;
+    [SerializeField] private GameObject itemPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class EnemyController : MonoBehaviour
     {
         if (healthPoint == 0)
         {
+            Instantiate(itemPrefab, gameObject.transform.localPosition, gameObject.transform.localRotation);
             Destroy(gameObject);
         }
     }

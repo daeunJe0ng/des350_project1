@@ -16,17 +16,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private List<Transform> firePointOffset;
     [SerializeField] private float fireForce;
     public int bulletNumber;
+    readonly int upgradeNumber = 10;
 
     void Start()
     {
         timer = 0.0f;
-        //bulletNumber = 1;
+        bulletNumber = upgradeNumber;
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void Fire()
     {
-        for (int i = 0; i < bulletNumber; ++i)
+        for (int i = 0; i < bulletNumber / upgradeNumber; ++i)
         {
             Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i].localPosition;
             GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i].localRotation);
