@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int healthPoint;
+
     [SerializeField] private float playerSpeed;
     private Rigidbody2D rigidBody;
     private Vector2 playerDirection;
@@ -17,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fireForce;
     public int bulletNumber;
     readonly int upgradeNumber = 10;
+
+    [SerializeField] private LevelManager levelManager;
 
     void Start()
     {
@@ -37,6 +41,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (healthPoint <= 0)
+        {
+            levelManager.Lose();
+            Destroy(gameObject);
+            //Time.timeScale = 0;
+        }
+
         timer += Time.deltaTime;
 
         float x = Input.GetAxisRaw("Horizontal");
