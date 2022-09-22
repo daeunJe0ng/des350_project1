@@ -53,17 +53,20 @@ public class LevelManager : MonoBehaviour
 
     public void LoseHealth()
     {
-        switch (player.GetComponent<PlayerController>().healthPoint)
+        if(player != null)
         {
-            case 0:
-                heart1.SetActive(false);
-                break;
-            case 1:
-                heart2.SetActive(false);
-                break;
-            case 2:
-                heart3.SetActive(false);
-                break;
+            switch (player.GetComponent<PlayerController>().healthPoint)
+            {
+                case 0:
+                    heart1.SetActive(false);
+                    break;
+                case 1:
+                    heart2.SetActive(false);
+                    break;
+                case 2:
+                    heart3.SetActive(false);
+                    break;
+            }
         }
     }
 }

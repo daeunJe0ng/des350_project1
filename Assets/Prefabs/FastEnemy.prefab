@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2831094145881782353}
   - component: {fileID: 3119132546482336078}
   - component: {fileID: 523734159546497016}
+  - component: {fileID: 6496097074946127342}
   m_Layer: 0
   m_Name: FastEnemy
   m_TagString: Enemy
@@ -124,7 +125,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -133,3 +134,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6496097074946127342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6368176268034163210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3dcf5ca53b6fe4dbb4c8f3feb38c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoint: 1
+  speed: 5
+  itemPrefab: {fileID: 5748969277619793130, guid: b405f97872991bb4e8ee551a901bb4f9, type: 3}
