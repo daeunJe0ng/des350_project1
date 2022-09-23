@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
     public GameObject heart1;
     public GameObject heart2;
     public GameObject heart3;
+    public GameObject heart4;
+    public GameObject heart5;
 
     public GameObject loseScreenPanel;
     public GameObject winScreenPanel;
@@ -65,6 +67,14 @@ public class LevelManager : MonoBehaviour
                     break;
                 case 2:
                     heart3.SetActive(false);
+                    break;
+                case 3:
+                    heart4.SetActive(false);
+                    break;
+                case 4:
+                    heart5.SetActive(false);
+                    break;
+                default:
                     break;
             }
         }
