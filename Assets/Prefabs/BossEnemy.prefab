@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1034847540833920685}
   - component: {fileID: -7632916026046933717}
   - component: {fileID: -3800957606943609980}
+  - component: {fileID: 1649834038278133134}
   m_Layer: 0
   m_Name: BossEnemy
   m_TagString: Enemy
@@ -139,3 +140,23 @@ MonoBehaviour:
   healthPoint: 50
   speed: 1
   itemPrefab: {fileID: 5748969277619793130, guid: b405f97872991bb4e8ee551a901bb4f9, type: 3}
+--- !u!114 &1649834038278133134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629019315455643010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d2174428ecc4d4bb84c303140c9f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveCount: 1
+  basicEnemyCount: 0
+  bigEnemyCount: 0
+  fastEnemyCount: 0
+  basicEnemy: {fileID: 3698420914222021543, guid: bded0e0de464bed42a30aa1735d687b6, type: 3}
+  bigEnemy: {fileID: 2314795638908605271, guid: a64828460cc7a324a97ac19721555144, type: 3}
+  fastEnemy: {fileID: 6368176268034163210, guid: 6136cf67eb2c8ae4ab0fac91fbf621c7, type: 3}
+  coolDown: 5

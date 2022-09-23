@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public LevelManager levelManager;
+
     public int waveCount;
     public int basicEnemyCount;
     public int bigEnemyCount;
@@ -17,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     public Camera camera;
 
     private float timer = 0;
-    public float coolDown; 
+    public float coolDown;
 
     // Start is called before the first frame update
     void Start()
@@ -37,25 +39,33 @@ public class EnemySpawner : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if(timer > coolDown)
+        if (levelManager.timer < 150.0f)
         {
-            for (int i = 0; i < waveCount/2; i++)
+            if (timer > coolDown)
             {
-                Instantiate(basicEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
-            }
+                for (int i = 0; i < waveCount / 2; i++)
+                {
+                    Instantiate(basicEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+                }
 
-            for (int i = 0; i < waveCount/10; i++)
-            {
-                Instantiate(bigEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
-            }
+                for (int i = 0; i < waveCount / 10; i++)
+                {
+                    Instantiate(bigEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+                }
 
-            for (int i = 0; i < waveCount/20; i++)
-            {
-                Instantiate(fastEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
-            }
+                for (int i = 0; i < waveCount / 20; i++)
+                {
+                    Instantiate(fastEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+                }
 
-            waveCount++;
-            timer = 0.0f;
+                waveCount++;
+                timer = 0.0f;
+            }
+        }
+        else if (bossEnemyCount != 1)
+        {
+            Instantiate(bossEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+            ++bossEnemyCount;
         }
     }
 }

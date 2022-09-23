@@ -33,9 +33,18 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < bulletNumber / upgradeNumber; ++i)
         {
-            Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i].localPosition;
-            GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i].localRotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * fireForce, ForceMode2D.Force);
+            if (i < 9)
+            {
+                Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i].localPosition;
+                GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i].localRotation);
+                bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * fireForce, ForceMode2D.Force);
+            }
+            else
+            {
+                //Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i / 9].localPosition;
+                //GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i / 9].localRotation);
+                //bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * fireForce, ForceMode2D.Force);
+            }
         }
     }
 
@@ -53,7 +62,7 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
-        if(timer > coolDown)
+        if (timer > coolDown)
         {
             Fire();
             timer = 0.0f;

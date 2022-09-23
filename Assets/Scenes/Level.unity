@@ -253,6 +253,7 @@ MonoBehaviour:
   loseScreenPanel: {fileID: 531457157}
   winScreenPanel: {fileID: 737763947}
   TimerText: {fileID: 338625698}
+  timer: 0
 --- !u!1 &338625696
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,6 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5060d600ec224f4ebc2d4464d3bf9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 336651245}
   waveCount: 2
   basicEnemyCount: 0
   bigEnemyCount: 0
@@ -1437,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6863144402624656836, guid: b766f8e67a0818e408a97439c1bf47d2, type: 3}
       propertyPath: healthPoint
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6863144402624656836, guid: b766f8e67a0818e408a97439c1bf47d2, type: 3}
       propertyPath: bulletNumber

@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     public GameObject loseScreenPanel;
     public GameObject winScreenPanel;
     public TextMeshProUGUI TimerText;
-    private float timer;
+    public float timer;
     private int minutes, seconds;
 
     // Start is called before the first frame update
