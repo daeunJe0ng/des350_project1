@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (transform.rotation != Quaternion.Euler(0.0f, 0.0f, 0.0f))
+        {
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        }
+
         if (healthPoint <= 0)
         {
             levelManager.Lose();
