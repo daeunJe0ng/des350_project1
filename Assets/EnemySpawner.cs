@@ -105,9 +105,5 @@ public class EnemySpawner : MonoBehaviour
 
         Vector3 spawnPosition = new Vector3(randomX, randomY, 0.0f);
         Instantiate(gameObject, spawnPosition, Quaternion.identity);
-
-        Debug.Log("Enemy: " + spawnPosition.ToString());
-        Debug.Log("Width: " + width.ToString());
-        Debug.Log("Height: " + height.ToString());
     }
 }
