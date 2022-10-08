@@ -81,11 +81,9 @@ public class EnemySpawner : MonoBehaviour
         {
             case 0:
                 randomX = mainCamera.transform.position.x + Random.Range(-width - widthOffset, -width);
-                Debug.Log("x0");
                 break;
             case 1:
                 randomX = mainCamera.transform.position.x + Random.Range(width, width + widthOffset);
-                Debug.Log("x1");
                 break;
             default:
                 break;
