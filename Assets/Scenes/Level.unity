@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManager: {fileID: 336651245}
-  mapGenerator: {fileID: 0}
+  mapGenerator: {fileID: 1156573763}
   waveCount: 2
   basicEnemyCount: 0
   bigEnemyCount: 0
