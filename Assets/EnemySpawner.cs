@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public LevelManager levelManager;
+    public MapGenerator mapGenerator;
 
     public int waveCount;
     public int basicEnemyCount;
@@ -99,6 +100,24 @@ public class EnemySpawner : MonoBehaviour
                 break;
             default:
                 break;
+        }
+
+        if (randomX < 0 && randomX <= -mapGenerator.mapSize)
+        {
+            randomX = mainCamera.transform.position.x + Random.Range(width, width + widthOffset);
+        }
+        else if (randomX > 0 && randomX >= mapGenerator.mapSize)
+        {
+            randomX = mainCamera.transform.position.x + Random.Range(-width - widthOffset, -width);
+        }
+
+        if (randomY < 0 && randomY <= -mapGenerator.mapSize)
+        {
+            randomY = mainCamera.transform.position.y + Random.Range(height, height + heightOffset);
+        }
+        else if (randomY > 0 && randomY >= mapGenerator.mapSize)
+        {
+            randomY = mainCamera.transform.position.y + Random.Range(-height - heightOffset, -height);
         }
 
         Vector3 spawnPosition = new Vector3(randomX, randomY, 0.0f);
