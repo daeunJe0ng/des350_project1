@@ -29,8 +29,7 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyController>().healthPoint -= 1;
         }
-
-        if (collision.gameObject.tag != "Player")
+        else if (collision.gameObject.tag != "Player")
         {
             Destroy(gameObject);
         }

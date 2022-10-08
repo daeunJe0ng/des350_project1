@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < bulletNumber / upgradeNumber; ++i)
         {
-            if (i < 9)
+            if (i < firePointOffset.Count)
             {
                 Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i].localPosition;
                 GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i].localRotation);
