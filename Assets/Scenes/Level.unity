@@ -855,7 +855,8 @@ MonoBehaviour:
   fastEnemy: {fileID: 6368176268034163210, guid: 6136cf67eb2c8ae4ab0fac91fbf621c7, type: 3}
   bossEnemy: {fileID: 1629019315455643010, guid: 51439ad0a75904e4789b4b68ea669f2a, type: 3}
   mainCamera: {fileID: 519420031}
-  coolDown: 5
+  coolDown: 3
+  bossEnemySpawnTime: 120
 --- !u!114 &1156573763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,7 +1462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6863144402624656836, guid: b766f8e67a0818e408a97439c1bf47d2, type: 3}
       propertyPath: healthPoint
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6863144402624656836, guid: b766f8e67a0818e408a97439c1bf47d2, type: 3}
       propertyPath: bulletNumber

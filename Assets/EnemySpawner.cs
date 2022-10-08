@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float timer = 0;
     public float coolDown;
+    public float bossEnemySpawnTime;
     private float width;
     private float height;
     private float widthOffset;
@@ -44,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (levelManager.timer < 150.0f)
+        if (levelManager.timer < bossEnemySpawnTime)
         {
             if (timer > coolDown)
             {

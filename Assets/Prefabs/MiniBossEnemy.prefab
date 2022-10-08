@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1649834038278133134}
   - component: {fileID: 2006627284802081910}
   m_Layer: 0
-  m_Name: BossEnemy
+  m_Name: MiniBossEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1629019315455643010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7372618438462995302}
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3dcf5ca53b6fe4dbb4c8f3feb38c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 25
-  speed: 1
+  healthPoint: 5
+  speed: 2
   itemPrefab: {fileID: 5748969277619793130, guid: b405f97872991bb4e8ee551a901bb4f9, type: 3}
 --- !u!114 &1649834038278133134
 MonoBehaviour:
@@ -155,14 +155,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d2174428ecc4d4bb84c303140c9f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveCount: 1
+  waveCount: 0
   basicEnemyCount: 0
   bigEnemyCount: 0
   fastEnemyCount: 0
-  miniBossEnemy: {fileID: 1629019315455643010, guid: 9153df513c7abae4b881582e1c92bb49, type: 3}
+  miniBossEnemy: {fileID: 1629019315455643010}
   explosionVFX: {fileID: 6982648390787248509, guid: 18b26c6f82df846439bce4f3fc358b4f, type: 3}
   coolDown: 5
-  lifeCoolTime: 20
+  lifeCoolTime: 5
 --- !u!95 &2006627284802081910
 Animator:
   serializedVersion: 4

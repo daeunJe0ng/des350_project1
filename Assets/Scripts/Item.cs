@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     private float timer;
+    public bool isUsingLifeCycle;
     [SerializeField] private float lifeCycle;
 
     private void Start()
@@ -16,9 +17,12 @@ public class Item : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= lifeCycle)
+        if (isUsingLifeCycle)
         {
-            Destroy(gameObject);
+            if (timer >= lifeCycle)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
