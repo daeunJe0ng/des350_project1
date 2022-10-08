@@ -6,7 +6,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private float timer;
-    [SerializeField] private float lifeCycle;
     Camera mainCamera;
     float cameraWidth, cameraHeight;
 
@@ -29,21 +28,21 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if (timer >= lifeCycle)
-        {
-            Destroy(gameObject);
-        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyController>().healthPoint -= 1;
         }
-        else if (collision.gameObject.tag != "Player")
+        
+        if (collision.gameObject.tag != "Player")
         {
+            if (collision.gameObject.tag == "Interactive")
+            {
+                return;
+            }
             Destroy(gameObject);
         }
     }
