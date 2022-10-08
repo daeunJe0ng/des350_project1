@@ -28,7 +28,7 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.name == "Player")
         {
             collision.gameObject.GetComponent<PlayerController>().bulletNumber += 1;
             Destroy(gameObject);
