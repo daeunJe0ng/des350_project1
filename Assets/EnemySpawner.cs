@@ -104,20 +104,20 @@ public class EnemySpawner : MonoBehaviour
 
         if (randomX < 0 && randomX <= -mapGenerator.mapSize)
         {
-            randomX = mainCamera.transform.position.x + Random.Range(width, width + widthOffset);
+            randomX = mainCamera.transform.position.x + Random.Range(width + 1, width + widthOffset);
         }
         else if (randomX > 0 && randomX >= mapGenerator.mapSize)
         {
-            randomX = mainCamera.transform.position.x + Random.Range(-width - widthOffset, -width);
+            randomX = mainCamera.transform.position.x + Random.Range(-width - widthOffset, -width - 1);
         }
 
         if (randomY < 0 && randomY <= -mapGenerator.mapSize)
         {
-            randomY = mainCamera.transform.position.y + Random.Range(height, height + heightOffset);
+            randomY = mainCamera.transform.position.y + Random.Range(height + 1, height + heightOffset);
         }
         else if (randomY > 0 && randomY >= mapGenerator.mapSize)
         {
-            randomY = mainCamera.transform.position.y + Random.Range(-height - heightOffset, -height);
+            randomY = mainCamera.transform.position.y + Random.Range(-height - heightOffset, -height - 1);
         }
 
         Vector3 spawnPosition = new Vector3(randomX, randomY, 0.0f);

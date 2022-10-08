@@ -51,6 +51,7 @@ public class LevelManager : MonoBehaviour
     public void Lose()
     {
         loseScreenPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void LoseHealth()
