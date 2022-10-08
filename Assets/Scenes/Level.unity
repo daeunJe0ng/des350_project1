@@ -442,7 +442,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 6671141253228803675, guid: 8638f9e3aeda65245953ce6866b375b2, type: 3}
-  mapSize: 50
+  mapSize: 30
   randomAmount: 100
 --- !u!1 &1197714107
 GameObject:
