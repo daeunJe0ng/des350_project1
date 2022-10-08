@@ -16,27 +16,31 @@ public class EnemySpawner : MonoBehaviour
     public GameObject bigEnemy;
     public GameObject fastEnemy;
     public GameObject bossEnemy;
-    public Camera camera;
+    public Camera mainCamera;
 
     private float timer = 0;
     public float coolDown;
+    private float width;
+    private float height;
+    private float widthOffset;
+    private float heightOffset;
 
     // Start is called before the first frame update
     void Start()
     {
-        float width = camera.orthographicSize * camera.aspect + 1;
-        float height = camera.orthographicSize + 1;
+        width = mainCamera.orthographicSize * mainCamera.aspect;
+        height = mainCamera.orthographicSize;
 
-        Instantiate(basicEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+        widthOffset = width / 10;
+        heightOffset = height / 10;
+
+        InstantiateEnemy(basicEnemy);
         timer = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float width = camera.orthographicSize * camera.aspect + 1;
-        float height = camera.orthographicSize + 1;
-
         timer += Time.deltaTime;
 
         if (levelManager.timer < 150.0f)
@@ -45,17 +49,17 @@ public class EnemySpawner : MonoBehaviour
             {
                 for (int i = 0; i < waveCount / 2; i++)
                 {
-                    Instantiate(basicEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+                    InstantiateEnemy(basicEnemy);
                 }
 
                 for (int i = 0; i < waveCount / 10; i++)
                 {
-                    Instantiate(bigEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+                    InstantiateEnemy(bigEnemy);
                 }
 
                 for (int i = 0; i < waveCount / 20; i++)
                 {
-                    Instantiate(fastEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+                    InstantiateEnemy(fastEnemy);
                 }
 
                 waveCount++;
@@ -64,8 +68,46 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (bossEnemyCount != 1)
         {
-            Instantiate(bossEnemy, new Vector3(camera.transform.position.x + Random.Range(-width, width), 3, camera.transform.position.z + height + Random.Range(10, 30)), Quaternion.identity);
+            InstantiateEnemy(bossEnemy);
             ++bossEnemyCount;
         }
+    }
+
+    void InstantiateEnemy(GameObject gameObject)
+    {
+        float randomX = 0.0f, randomY = 0.0f;
+
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                randomX = mainCamera.transform.position.x + Random.Range(-width - widthOffset, -width);
+                Debug.Log("x0");
+                break;
+            case 1:
+                randomX = mainCamera.transform.position.x + Random.Range(width, width + widthOffset);
+                Debug.Log("x1");
+                break;
+            default:
+                break;
+        }
+
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                randomY = mainCamera.transform.position.y + Random.Range(-height - heightOffset, -height);
+                break;
+            case 1:
+                randomY = mainCamera.transform.position.y + Random.Range(height, height + heightOffset);
+                break;
+            default:
+                break;
+        }
+
+        Vector3 spawnPosition = new Vector3(randomX, randomY, 0.0f);
+        Instantiate(gameObject, spawnPosition, Quaternion.identity);
+
+        Debug.Log("Enemy: " + spawnPosition.ToString());
+        Debug.Log("Width: " + width.ToString());
+        Debug.Log("Height: " + height.ToString());
     }
 }
