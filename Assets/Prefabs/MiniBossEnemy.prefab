@@ -162,7 +162,7 @@ MonoBehaviour:
   miniBossEnemy: {fileID: 1629019315455643010}
   explosionVFX: {fileID: 6982648390787248509, guid: 18b26c6f82df846439bce4f3fc358b4f, type: 3}
   coolDown: 5
-  lifeCoolTime: 5
+  lifeCoolTime: 10
 --- !u!95 &2006627284802081910
 Animator:
   serializedVersion: 4

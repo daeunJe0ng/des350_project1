@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3dcf5ca53b6fe4dbb4c8f3feb38c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 25
+  healthPoint: 50
   speed: 1
   itemPrefab: {fileID: 5748969277619793130, guid: b405f97872991bb4e8ee551a901bb4f9, type: 3}
 --- !u!114 &1649834038278133134
@@ -162,7 +162,7 @@ MonoBehaviour:
   miniBossEnemy: {fileID: 1629019315455643010, guid: 9153df513c7abae4b881582e1c92bb49, type: 3}
   explosionVFX: {fileID: 6982648390787248509, guid: 18b26c6f82df846439bce4f3fc358b4f, type: 3}
   coolDown: 5
-  lifeCoolTime: 20
+  lifeCoolTime: 60
 --- !u!95 &2006627284802081910
 Animator:
   serializedVersion: 4

@@ -64,8 +64,8 @@ public class BossEnemyBehavior : MonoBehaviour
     void Explosion()
     {
         Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        StartCoroutine(CameraShake(2.0f, 2.0f));
         Destroy(gameObject);
-        StartCoroutine("CameraShake");
     }
 
     IEnumerator CameraShake(float duration, float magnitude)
