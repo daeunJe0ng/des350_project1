@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float lifeTime;
     private float timer;
     Camera mainCamera;
     float cameraWidth, cameraHeight;
@@ -12,22 +13,27 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         timer = 0.0f;
-        mainCamera = FindObjectOfType<Camera>();
-        cameraWidth = mainCamera.orthographicSize * mainCamera.aspect;
-        cameraHeight = mainCamera.orthographicSize;
+        //mainCamera = FindObjectOfType<Camera>();
+        //cameraWidth = mainCamera.orthographicSize * mainCamera.aspect;
+        //cameraHeight = mainCamera.orthographicSize;
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
 
-        if ((transform.position.x > 0 && transform.position.x >= cameraWidth) ||
-            (transform.position.x < 0 && transform.position.x <= -cameraWidth) ||
-            (transform.position.y > 0 && transform.position.y >= cameraHeight) ||
-            (transform.position.y < 0 && transform.position.y <= -cameraHeight))
+        if (timer >= lifeTime)
         {
             Destroy(gameObject);
         }
+
+        //if ((transform.position.x > 0 && transform.position.x >= cameraWidth) ||
+        //    (transform.position.x < 0 && transform.position.x <= -cameraWidth) ||
+        //    (transform.position.y > 0 && transform.position.y >= cameraHeight) ||
+        //    (transform.position.y < 0 && transform.position.y <= -cameraHeight))
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,7 +42,7 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyController>().healthPoint -= 1;
         }
-        
+
         if (collision.gameObject.tag != "Player")
         {
             if (collision.gameObject.tag == "Interactive")
