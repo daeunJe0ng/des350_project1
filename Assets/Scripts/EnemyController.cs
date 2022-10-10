@@ -6,6 +6,10 @@ public class EnemyController : MonoBehaviour
 {
     public int healthPoint;
     public float speed;
+    public int damage = 1;
+    public bool isUsingLifeCycle = false;
+    public float lifeCycle = 1.0f;
+    private float timer = 0.0f;
     [SerializeField] private GameObject itemPrefab;
     private Transform target;
 
@@ -18,12 +22,22 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+
+        if(isUsingLifeCycle)
+        {
+            if(timer > lifeCycle)
+            {
+                Destroy(gameObject);
+            }
+        }
+
         if (transform.rotation != Quaternion.Euler(0.0f, 0.0f, 0.0f))
         {
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
 
-        if (healthPoint == 0)
+        if (healthPoint <= 0)
         {
             Instantiate(itemPrefab, gameObject.transform.localPosition, gameObject.transform.localRotation);
             Destroy(gameObject);
@@ -39,7 +53,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().healthPoint -= 1;
+            collision.gameObject.GetComponent<PlayerController>().healthPoint -= damage;
         }
     }
 }

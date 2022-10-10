@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1629019315455643010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7372618438462995302}
@@ -155,14 +155,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d2174428ecc4d4bb84c303140c9f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapGenerator: {fileID: 0}
   waveCount: 1
   basicEnemyCount: 0
   bigEnemyCount: 0
   fastEnemyCount: 0
   miniBossEnemy: {fileID: 1629019315455643010, guid: 9153df513c7abae4b881582e1c92bb49, type: 3}
   explosionVFX: {fileID: 6982648390787248509, guid: 18b26c6f82df846439bce4f3fc358b4f, type: 3}
-  coolDown: 5
-  lifeCoolTime: 60
+  coolDown: 10
+  lifeCoolTime: 59
 --- !u!95 &2006627284802081910
 Animator:
   serializedVersion: 4

@@ -17,33 +17,32 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private List<Transform> firePointOffset;
     [SerializeField] private float fireForce;
-    public int bulletNumber;
-    readonly int upgradeNumber = 10;
+    public int upgradeNumber = 0;
 
     [SerializeField] private LevelManager levelManager;
 
     void Start()
     {
         timer = 0.0f;
-        bulletNumber = upgradeNumber;
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void Fire()
     {
-        for (int i = 0; i < bulletNumber / upgradeNumber; ++i)
+        for (int i = 0; i < firePointOffset.Count; ++i)
         {
-            if (i < firePointOffset.Count)
+            if (i >= upgradeNumber)
             {
-                Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i].localPosition;
-                GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i].localRotation);
-                bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * fireForce, ForceMode2D.Force);
+                break;
             }
-            else
+
+            Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i].localPosition;
+            GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i].localRotation);
+            bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * fireForce, ForceMode2D.Force);
+
+            if (upgradeNumber > firePointOffset.Count)
             {
-                //Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i / 9].localPosition;
-                //GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i / 9].localRotation);
-                //bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * fireForce, ForceMode2D.Force);
+                bullet.GetComponent<Bullet>().damage++;
             }
         }
     }
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
         {
             levelManager.Lose();
             Destroy(gameObject);
-            //Time.timeScale = 0;
         }
 
         timer += Time.deltaTime;

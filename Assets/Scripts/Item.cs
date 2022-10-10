@@ -7,10 +7,12 @@ public class Item : MonoBehaviour
     private float timer;
     public bool isUsingLifeCycle;
     [SerializeField] private float lifeCycle;
+    ExpManager expManager;
 
     private void Start()
     {
         timer = 0.0f;
+        expManager = FindObjectOfType<ExpManager>().gameObject.GetComponent<ExpManager>();
     }
 
     private void Update()
@@ -30,7 +32,7 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            collision.gameObject.GetComponent<PlayerController>().bulletNumber += 1;
+            expManager.updatedExp += 1;
             Destroy(gameObject);
         }
     }

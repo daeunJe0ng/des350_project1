@@ -82,10 +82,10 @@ public class EnemySpawner : MonoBehaviour
         switch (Random.Range(0, 2))
         {
             case 0:
-                randomX = mainCamera.transform.position.x + Random.Range(-width - widthOffset, -width);
+                randomX = mainCamera.transform.position.x + Random.Range(-width - widthOffset, -width + 1);
                 break;
             case 1:
-                randomX = mainCamera.transform.position.x + Random.Range(width, width + widthOffset);
+                randomX = mainCamera.transform.position.x + Random.Range(width - 1, width + widthOffset);
                 break;
             default:
                 break;
@@ -94,10 +94,10 @@ public class EnemySpawner : MonoBehaviour
         switch (Random.Range(0, 2))
         {
             case 0:
-                randomY = mainCamera.transform.position.y + Random.Range(-height - heightOffset, -height);
+                randomY = mainCamera.transform.position.y + Random.Range(-height - heightOffset, -height + 1);
                 break;
             case 1:
-                randomY = mainCamera.transform.position.y + Random.Range(height, height + heightOffset);
+                randomY = mainCamera.transform.position.y + Random.Range(height - 1, height + heightOffset);
                 break;
             default:
                 break;

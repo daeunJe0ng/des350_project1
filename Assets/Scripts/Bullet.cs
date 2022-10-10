@@ -6,6 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float lifeTime;
+    public int damage;
     private float timer;
     Camera mainCamera;
     float cameraWidth, cameraHeight;
@@ -40,7 +41,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<EnemyController>().healthPoint -= 1;
+            collision.gameObject.GetComponent<EnemyController>().healthPoint -= damage;
         }
 
         if (collision.gameObject.tag != "Player")
@@ -49,6 +50,7 @@ public class Bullet : MonoBehaviour
             {
                 return;
             }
+
             Destroy(gameObject);
         }
     }
