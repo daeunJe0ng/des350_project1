@@ -8,11 +8,17 @@ public class Item : MonoBehaviour
     public bool isUsingLifeCycle;
     [SerializeField] private float lifeCycle;
     ExpManager expManager;
+    private AudioSource audioSource;
+    private Renderer renderer;
+    private Collider2D collider;
 
     private void Start()
     {
         timer = 0.0f;
         expManager = FindObjectOfType<ExpManager>().gameObject.GetComponent<ExpManager>();
+        audioSource = GetComponent<AudioSource>();
+        renderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<CircleCollider2D>();
     }
 
     private void Update()
@@ -33,7 +39,12 @@ public class Item : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             expManager.updatedExp += 1;
-            Destroy(gameObject);
+            
+            audioSource.Play();
+            renderer.enabled = false;
+            collider.enabled = false;
+
+            Destroy(gameObject, audioSource.clip.length);
         }
     }
 }
