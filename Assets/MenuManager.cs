@@ -7,33 +7,42 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject titleScreenPanel;
     public GameObject howToPlayPanel;
-    public AudioSource startButtonSFX;
-    public AudioSource howToPlayButtonSFX;
-    public AudioSource BackButtonSFX;
+    public AudioClip startButtonSFX;
+    public AudioClip defaultButtonSFX;
+    private AudioSource audioSource;
+
+    public void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void GameStart()
     {
-        startButtonSFX.Play();
+        audioSource.clip = startButtonSFX;
+        audioSource.Play();
         SceneManager.LoadScene("Level");
     }
 
     public void ShowHowToPlay()
     {
-        howToPlayButtonSFX.Play();
+        audioSource.clip = defaultButtonSFX;
+        audioSource.Play();
         titleScreenPanel.SetActive(false);
         howToPlayPanel.SetActive(true);
     }
 
     public void HideHowToPlay()
     {
-        BackButtonSFX.Play();
+        audioSource.clip = defaultButtonSFX;
+        audioSource.Play();
         titleScreenPanel.SetActive(true);
         howToPlayPanel.SetActive(false);
     }
 
     public void Quit()
     {
-        howToPlayButtonSFX.Play();
+        audioSource.clip = defaultButtonSFX;
+        audioSource.Play();
         Application.Quit();
     }
 }
