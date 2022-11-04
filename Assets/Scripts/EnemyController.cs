@@ -11,12 +11,28 @@ public class EnemyController : MonoBehaviour
     public float lifeCycle = 1.0f;
     private float timer = 0.0f;
     [SerializeField] private GameObject itemPrefab;
+
+    public AudioClip enemyDyingClip;
+    public AudioClip playerHurtClip;
+
     private Transform target;
+    private AudioSource audioSource;
+    private Renderer renderer;
+    private Collider2D collider;
+    private bool isDeathTriggered = false;
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        audioSource = GetComponent<AudioSource>();
+        renderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<BoxCollider2D>();
+
+        if (collider == null)
+        {
+            collider = GetComponent<CircleCollider2D>();
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +44,17 @@ public class EnemyController : MonoBehaviour
         {
             if(timer > lifeCycle)
             {
-                Destroy(gameObject);
+                if (!isDeathTriggered)
+                {
+                    isDeathTriggered = true;
+
+                    audioSource.clip = enemyDyingClip;
+                    audioSource.Play();
+                    renderer.enabled = false;
+                    collider.enabled = false;
+
+                    Destroy(gameObject, audioSource.clip.length);
+                }
             }
         }
 
@@ -39,8 +65,19 @@ public class EnemyController : MonoBehaviour
 
         if (healthPoint <= 0)
         {
-            Instantiate(itemPrefab, gameObject.transform.localPosition, gameObject.transform.localRotation);
-            Destroy(gameObject);
+            if (!isDeathTriggered)
+            {
+                isDeathTriggered = true;
+
+                Instantiate(itemPrefab, gameObject.transform.localPosition, gameObject.transform.localRotation);
+
+                audioSource.clip = enemyDyingClip;
+                audioSource.Play();
+                renderer.enabled = false;
+                collider.enabled = false;
+
+                Destroy(gameObject, audioSource.clip.length);
+            }
         }
 
         if (target != null)
@@ -54,6 +91,9 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerController>().healthPoint -= damage;
+
+            audioSource.clip = playerHurtClip;
+            audioSource.Play();
         }
     }
 }
