@@ -11,11 +11,11 @@ public class EnemyController : MonoBehaviour
     public float lifeCycle = 1.0f;
     private float timer = 0.0f;
     [SerializeField] private GameObject itemPrefab;
+    private Transform target;
 
     public AudioClip enemyDyingClip;
     public AudioClip playerHurtClip;
 
-    private Transform target;
     private AudioSource audioSource;
     private Renderer renderer;
     private Collider2D collider;

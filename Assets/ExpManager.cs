@@ -14,10 +14,12 @@ public class ExpManager : MonoBehaviour
     public float maxExp;
     public float updatedExp;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,10 +45,12 @@ public class ExpManager : MonoBehaviour
 
         if (playerController.upgradeNumber > 8)
         {
+            audioSource.Play();
             levelUpText.SetText("Damage up!");
         }
         else
         {
+            audioSource.Play();
             levelUpText.SetText("One more bullet!");
         }
 

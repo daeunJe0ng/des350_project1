@@ -20,10 +20,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LevelManager levelManager;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         timer = 0.0f;
         rigidBody = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Fire()
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
             Vector3 updatedPosition = gameObject.transform.localPosition + firePointOffset[i].localPosition;
             GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i].localRotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * fireForce, ForceMode2D.Force);
+
+            audioSource.Play();
 
             if (upgradeNumber > firePointOffset.Count)
             {
