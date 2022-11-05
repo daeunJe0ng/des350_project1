@@ -155,6 +155,9 @@ MonoBehaviour:
   itemPrefab: {fileID: 5748969277619793130, guid: b405f97872991bb4e8ee551a901bb4f9, type: 3}
   enemyDyingClip: {fileID: 8300000, guid: c653e3870edcf0b4cb865edd7ddd9032, type: 3}
   playerHurtClip: {fileID: 8300000, guid: 47ec5149dac912f48ac2343ed67671de, type: 3}
+  explosionClip: {fileID: 0}
+  isAttacked: 0
+  damageText: {fileID: 1879862261279947753, guid: fd7cfbcf5bc76e44baa3b3221158ac49, type: 3}
 --- !u!82 &2810506351254376890
 AudioSource:
   m_ObjectHideFlags: 0

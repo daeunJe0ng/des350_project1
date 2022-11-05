@@ -43,6 +43,7 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyController>().healthPoint -= damage;
             collision.gameObject.GetComponent<EnemyController>().isAttacked = true;
+            collision.gameObject.GetComponent<EnemyController>().PopUpDamageText(damage);
         }
 
         if (collision.gameObject.tag != "Player")

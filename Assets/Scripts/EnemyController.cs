@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class EnemyController : MonoBehaviour
 {
@@ -28,6 +30,8 @@ public class EnemyController : MonoBehaviour
 
     Renderer[] renderers;
     Color[] colors;
+
+    public GameObject damageText;
 
     // Start is called before the first frame update
     void Start()
@@ -164,5 +168,17 @@ public class EnemyController : MonoBehaviour
             audioSource.clip = playerHurtClip;
             audioSource.Play();
         }
+    }
+
+    public void PopUpDamageText(float damage)
+    {
+        string text = "-";
+        text += damage.ToString();
+        damageText.GetComponent<TMPro.TextMeshPro>().SetText(text);
+
+        Vector3 spawnPosition = transform.position;
+        spawnPosition.y += 1;
+
+        Instantiate(damageText, spawnPosition, Quaternion.identity);
     }
 }
