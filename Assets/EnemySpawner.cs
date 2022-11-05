@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public LevelManager levelManager;
+    private LevelManager levelManager;
     public MapGenerator mapGenerator;
 
     public int waveCount;
@@ -38,6 +38,8 @@ public class EnemySpawner : MonoBehaviour
 
         InstantiateEnemy(basicEnemy);
         timer = 0.0f;
+
+        levelManager = GetComponent<LevelManager>();
     }
 
     // Update is called once per frame

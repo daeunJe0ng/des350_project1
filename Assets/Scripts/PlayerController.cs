@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
 
     private AudioSource audioSource;
+    public AudioClip bulletClip;
+    public AudioClip playerDeathClip;
+
+    private bool isDeathTriggered = false;
 
     void Start()
     {
@@ -42,8 +46,6 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, updatedPosition, firePointOffset[i].localRotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.right * fireForce, ForceMode2D.Force);
 
-            audioSource.Play();
-
             if (upgradeNumber > firePointOffset.Count)
             {
                 bullet.GetComponent<Bullet>().damage++;
@@ -60,8 +62,17 @@ public class PlayerController : MonoBehaviour
 
         if (healthPoint <= 0)
         {
-            levelManager.Lose();
-            Destroy(gameObject);
+            if (!isDeathTriggered)
+            {
+                levelManager.Lose();
+
+                audioSource.clip = playerDeathClip;
+                audioSource.Play();
+
+                Destroy(gameObject, audioSource.clip.length);
+
+                isDeathTriggered = true;
+            }
         }
 
         timer += Time.deltaTime;
@@ -71,7 +82,11 @@ public class PlayerController : MonoBehaviour
 
         if (timer > coolDown)
         {
+            audioSource.clip = bulletClip;
+            audioSource.Play();
+
             Fire();
+
             timer = 0.0f;
         }
 

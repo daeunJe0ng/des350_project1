@@ -666,6 +666,8 @@ MonoBehaviour:
   fireForce: 1
   upgradeNumber: 0
   levelManager: {fileID: 0}
+  bulletClip: {fileID: 8300000, guid: 90ba49d36223a1e408bf9855fd0a42c1, type: 3}
+  playerDeathClip: {fileID: 8300000, guid: 0e342730b023f09489a0481afae4dd03, type: 3}
 --- !u!82 &3139772530182423181
 AudioSource:
   m_ObjectHideFlags: 0
@@ -676,7 +678,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90ba49d36223a1e408bf9855fd0a42c1, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
