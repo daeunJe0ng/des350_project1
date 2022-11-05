@@ -15,6 +15,7 @@ public class ExpManager : MonoBehaviour
     public float updatedExp;
 
     private AudioSource audioSource;
+    public AudioClip powerUpClip;
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +46,13 @@ public class ExpManager : MonoBehaviour
 
         if (playerController.upgradeNumber > 8)
         {
+            audioSource.clip = powerUpClip;
             audioSource.Play();
             levelUpText.SetText("Damage up!");
         }
         else
         {
+            audioSource.clip = powerUpClip;
             audioSource.Play();
             levelUpText.SetText("One more bullet!");
         }
