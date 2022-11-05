@@ -46,7 +46,7 @@ public class ExpManager : MonoBehaviour
             StartCoroutine(ShowLevelUpText());
 
             updatedExp = 0;
-            maxExp *= 1.35f;
+            maxExp *= 1.4f;
         }
     }
 
