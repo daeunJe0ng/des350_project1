@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
             if (upgradeNumber > firePointOffset.Count)
             {
-                bullet.GetComponent<Bullet>().damage++;
+                bullet.GetComponent<Bullet>().damage += upgradeNumber - firePointOffset.Count;
             }
         }
     }
