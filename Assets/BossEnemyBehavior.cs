@@ -31,6 +31,11 @@ public class BossEnemyBehavior : MonoBehaviour
 
         mainCamera = FindObjectOfType<Camera>().gameObject.GetComponent<Camera>();
         mapGenerator = FindObjectOfType<MapGenerator>().gameObject.GetComponent<MapGenerator>();
+
+        if (gameObject.name == "MiniBossEnemy(Clone)")
+        {
+            GetComponent<AudioSource>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -116,7 +121,6 @@ public class BossEnemyBehavior : MonoBehaviour
 
     void Explosion()
     {
-
         if (gameObject.name == "BossEnemy(Clone)")
         {
             explosionVFX.transform.localScale = new Vector3(50, 50, 0);
@@ -125,6 +129,7 @@ public class BossEnemyBehavior : MonoBehaviour
 
         Instantiate(explosionVFX, transform.position, Quaternion.identity);
         //StartCoroutine(CameraShake(2.0f, 2.0f));
+
         Destroy(gameObject);
     }
 

@@ -170,6 +170,7 @@ MonoBehaviour:
   explosionVFX: {fileID: 6982648390787248509, guid: 18b26c6f82df846439bce4f3fc358b4f, type: 3}
   coolDown: 5
   lifeCoolTime: 10
+  explosionClip: {fileID: 8300000, guid: 92c3fc58a85fd514db202a2280e057cc, type: 3}
 --- !u!95 &2006627284802081910
 Animator:
   serializedVersion: 4
@@ -200,8 +201,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: a0264d05e061397438c29a7edb318e57, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     public AudioClip enemyDyingClip;
     public AudioClip playerHurtClip;
+    public AudioClip explosionClip;
 
     private AudioSource audioSource;
     private Renderer renderer;
@@ -40,9 +41,9 @@ public class EnemyController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(isUsingLifeCycle)
+        if (isUsingLifeCycle)
         {
-            if(timer > lifeCycle)
+            if (timer > lifeCycle)
             {
                 if (!isDeathTriggered)
                 {
@@ -71,10 +72,26 @@ public class EnemyController : MonoBehaviour
 
                 Instantiate(itemPrefab, gameObject.transform.localPosition, gameObject.transform.localRotation);
 
-                audioSource.clip = enemyDyingClip;
+                if (enemyDyingClip == null)
+                {
+                    audioSource.clip = explosionClip;
+                }
+                else
+                {
+                    audioSource.clip = enemyDyingClip;
+                }
+
                 audioSource.Play();
-                renderer.enabled = false;
-                collider.enabled = false;
+
+                if (renderer != null)
+                {
+                    renderer.enabled = false;
+                }
+
+                if (collider != null)
+                {
+                    collider.enabled = false;
+                }
 
                 Destroy(gameObject, audioSource.clip.length);
             }

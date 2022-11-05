@@ -1609,7 +1609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5060d600ec224f4ebc2d4464d3bf9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 0}
   mapGenerator: {fileID: 1156573763}
   waveCount: 2
   basicEnemyCount: 0
@@ -2523,7 +2522,7 @@ PrefabInstance:
     - target: {fileID: 6863144402624656836, guid: b766f8e67a0818e408a97439c1bf47d2, type: 3}
       propertyPath: levelManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1156573766}
     - target: {fileID: 6863144402624656836, guid: b766f8e67a0818e408a97439c1bf47d2, type: 3}
       propertyPath: upgradeNumber
       value: 1
