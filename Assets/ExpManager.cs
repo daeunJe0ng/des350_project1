@@ -26,6 +26,16 @@ public class ExpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            playerController.healthPoint = 100;
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            playerController.upgradeNumber = 13;
+        }
+
         slider.value = updatedExp / maxExp;
 
         if (updatedExp >= maxExp)
