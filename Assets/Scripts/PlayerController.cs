@@ -26,11 +26,17 @@ public class PlayerController : MonoBehaviour
 
     private bool isDeathTriggered = false;
 
+    private Renderer renderer;
+    private Color originalColor;
+    public bool isAttacked = false;
+
     void Start()
     {
         timer = 0.0f;
         rigidBody = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        renderer = GetComponent<SpriteRenderer>();
+        originalColor = renderer.material.color;
     }
 
     private void Fire()
@@ -55,6 +61,19 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isAttacked)
+        {
+            if (renderer.material.color.a >= 0.25f)
+            {
+                renderer.material.color = new Vector4(originalColor.r, originalColor.g, originalColor.b, renderer.material.color.a - Time.deltaTime * 2.0f);
+            }
+            else
+            {
+                renderer.material.color = originalColor;
+                isAttacked = false;
+            }
+        }
+
         if (transform.rotation != Quaternion.Euler(0.0f, 0.0f, 0.0f))
         {
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);

@@ -42,6 +42,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<EnemyController>().healthPoint -= damage;
+            collision.gameObject.GetComponent<EnemyController>().isAttacked = true;
         }
 
         if (collision.gameObject.tag != "Player")

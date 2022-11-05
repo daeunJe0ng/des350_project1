@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -22,6 +23,12 @@ public class EnemyController : MonoBehaviour
     private Collider2D collider;
     private bool isDeathTriggered = false;
 
+    public bool isAttacked = false;
+    private Color originalColor;
+
+    Renderer[] renderers;
+    Color[] colors;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,15 +37,49 @@ public class EnemyController : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<BoxCollider2D>();
 
+        originalColor = renderer.material.color;
+
         if (collider == null)
         {
             collider = GetComponent<CircleCollider2D>();
+        }
+
+        renderers = GetComponentsInChildren<SpriteRenderer>();
+        
+        if(renderers != null)
+        {
+            colors = new Color[renderers.Length];
+        }
+
+        for (int i = 0; i < renderers.Length; ++i)
+        {
+            colors[i] = renderers[i].material.color;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isAttacked)
+        {
+            for (int i = 0; i < renderers.Length; ++i)
+            {
+                if (renderers[i].material.color.a >= 0.25f)
+                {
+                    renderers[i].material.color = new Vector4(originalColor.r, originalColor.g, originalColor.b, renderers[i].material.color.a - Time.deltaTime * 2.0f);
+                }
+                else
+                {
+                    renderers[i].material.color = colors[i];
+
+                    if (i == renderers.Length - 1)
+                    {
+                        isAttacked = false;
+                    }
+                }
+            }
+        }
+
         timer += Time.deltaTime;
 
         if (isUsingLifeCycle)
@@ -49,8 +90,17 @@ public class EnemyController : MonoBehaviour
                 {
                     isDeathTriggered = true;
 
-                    audioSource.clip = enemyDyingClip;
+                    if (enemyDyingClip == null)
+                    {
+                        audioSource.clip = explosionClip;
+                    }
+                    else
+                    {
+                        audioSource.clip = enemyDyingClip;
+                    }
+
                     audioSource.Play();
+                    
                     renderer.enabled = false;
                     collider.enabled = false;
 
@@ -108,6 +158,8 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<PlayerController>().healthPoint -= damage;
+
+            collision.gameObject.GetComponent<PlayerController>().isAttacked = true;
 
             audioSource.clip = playerHurtClip;
             audioSource.Play();
