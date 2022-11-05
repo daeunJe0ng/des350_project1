@@ -165,6 +165,8 @@ public class EnemyController : MonoBehaviour
 
             collision.gameObject.GetComponent<PlayerController>().isAttacked = true;
 
+            collision.gameObject.GetComponent<PlayerController>().PopUpDamageText(damage);
+
             audioSource.clip = playerHurtClip;
             audioSource.Play();
         }

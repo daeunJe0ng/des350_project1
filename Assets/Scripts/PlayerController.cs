@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private Renderer renderer;
     private Color originalColor;
     public bool isAttacked = false;
+
+    public GameObject damageText;
 
     void Start()
     {
@@ -115,5 +119,17 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rigidBody.MovePosition(rigidBody.position + playerDirection * playerSpeed * Time.fixedDeltaTime);
+    }
+
+    public void PopUpDamageText(float damage)
+    {
+        string text = "-";
+        text += damage.ToString();
+        damageText.GetComponent<TMPro.TextMeshPro>().SetText(text);
+
+        Vector3 spawnPosition = transform.position;
+        spawnPosition.y += 1;
+
+        Instantiate(damageText, spawnPosition, Quaternion.identity);
     }
 }

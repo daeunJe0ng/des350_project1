@@ -4898,7 +4898,7 @@ Transform:
   m_GameObject: {fileID: 6982648390787248509}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2423736408106569019}
@@ -4942,6 +4942,8 @@ MonoBehaviour:
   enemyDyingClip: {fileID: 0}
   playerHurtClip: {fileID: 0}
   explosionClip: {fileID: 8300000, guid: 92c3fc58a85fd514db202a2280e057cc, type: 3}
+  isAttacked: 0
+  damageText: {fileID: 0}
 --- !u!82 &-3341334204989100302
 AudioSource:
   m_ObjectHideFlags: 0

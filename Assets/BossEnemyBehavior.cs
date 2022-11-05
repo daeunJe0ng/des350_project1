@@ -124,7 +124,7 @@ public class BossEnemyBehavior : MonoBehaviour
         if (gameObject.name == "BossEnemy(Clone)")
         {
             explosionVFX.transform.localScale = new Vector3(50, 50, 0);
-            explosionVFX.GetComponent<EnemyController>().damage = 5;
+            explosionVFX.GetComponent<EnemyController>().damage = 100;
         }
 
         Instantiate(explosionVFX, transform.position, Quaternion.identity);

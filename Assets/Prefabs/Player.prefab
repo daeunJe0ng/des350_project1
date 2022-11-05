@@ -668,6 +668,8 @@ MonoBehaviour:
   levelManager: {fileID: 0}
   bulletClip: {fileID: 8300000, guid: 90ba49d36223a1e408bf9855fd0a42c1, type: 3}
   playerDeathClip: {fileID: 8300000, guid: 0e342730b023f09489a0481afae4dd03, type: 3}
+  isAttacked: 0
+  damageText: {fileID: 1879862261279947753, guid: fd7cfbcf5bc76e44baa3b3221158ac49, type: 3}
 --- !u!82 &3139772530182423181
 AudioSource:
   m_ObjectHideFlags: 0
