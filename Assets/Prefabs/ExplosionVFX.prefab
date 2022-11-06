@@ -4937,7 +4937,7 @@ MonoBehaviour:
   speed: 0
   damage: 1
   isUsingLifeCycle: 1
-  lifeCycle: 1
+  lifeCycle: 0.1
   itemPrefab: {fileID: 0}
   enemyDyingClip: {fileID: 0}
   playerHurtClip: {fileID: 0}

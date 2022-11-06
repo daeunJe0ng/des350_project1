@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoint: 5
-  speed: 2
+  speed: 3
   damage: 1
   isUsingLifeCycle: 0
   lifeCycle: 1

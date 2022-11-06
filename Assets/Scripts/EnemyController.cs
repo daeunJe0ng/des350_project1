@@ -41,7 +41,10 @@ public class EnemyController : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<BoxCollider2D>();
 
-        originalColor = renderer.material.color;
+        if(renderer != null)
+        {
+            originalColor = renderer.material.color;
+        }
 
         if (collider == null)
         {
@@ -104,9 +107,14 @@ public class EnemyController : MonoBehaviour
                     }
 
                     audioSource.Play();
-                    
-                    renderer.enabled = false;
+
+                    if (renderer != null)
+                    {
+                        renderer.enabled = false;
+                    }
+
                     collider.enabled = false;
+                    damage = 0;
 
                     Destroy(gameObject, audioSource.clip.length);
                 }

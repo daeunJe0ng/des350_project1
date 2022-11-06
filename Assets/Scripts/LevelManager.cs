@@ -25,7 +25,8 @@ public class LevelManager : MonoBehaviour
     public AudioClip winClip;
     public AudioClip loseClip;
 
-    private bool isWinTriggered;
+    private bool isWinTriggered = false;
+    private bool isLoseTriggered = false;
 
     public GameObject pauseMenu;
 
@@ -38,10 +39,13 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!isLoseTriggered && !isWinTriggered)
         {
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
 
         timer += Time.deltaTime;
@@ -50,6 +54,11 @@ public class LevelManager : MonoBehaviour
         seconds = Mathf.FloorToInt(timer - minutes * 60f);
 
         TimerText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            minutes = 3;
+        }
 
         if (minutes >= 3)
         {
@@ -80,6 +89,7 @@ public class LevelManager : MonoBehaviour
 
         loseScreenPanel.SetActive(true);
         Time.timeScale = 0;
+        isLoseTriggered = true;
     }
 
     public void UpdatePlayerHealthUI()
@@ -112,11 +122,16 @@ public class LevelManager : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+
+        if (!isLoseTriggered && !isWinTriggered)
+        {
+            Time.timeScale = 1;
+        }
     }
 
     public void MainMenu()
     {
+        Time.timeScale = 1;
         audioSource.clip = defaultButtonSFX;
         audioSource.Play();
         SceneManager.LoadScene("MainMenu");

@@ -36,6 +36,11 @@ public class ExpManager : MonoBehaviour
             updatedExp += 100;
         }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            playerController.healthPoint = 0;
+        }
+
         slider.value = updatedExp / maxExp;
 
         if (updatedExp >= maxExp)
@@ -46,7 +51,7 @@ public class ExpManager : MonoBehaviour
             StartCoroutine(ShowLevelUpText());
 
             updatedExp = 0;
-            maxExp *= 1.4f;
+            maxExp *= 1.25f;
         }
     }
 

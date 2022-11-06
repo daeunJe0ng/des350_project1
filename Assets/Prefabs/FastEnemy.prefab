@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3dcf5ca53b6fe4dbb4c8f3feb38c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 1
-  speed: 3
+  healthPoint: 2
+  speed: 4
   damage: 1
   isUsingLifeCycle: 0
   lifeCycle: 1
